@@ -45,6 +45,14 @@ export async function getPost(slug) {
         coverImage {
           url
         }
+        author {
+          name
+          profilePicture
+        }
+        tags {
+          name
+          slug
+        }
         content {
           html
         }
