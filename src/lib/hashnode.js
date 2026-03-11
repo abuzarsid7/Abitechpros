@@ -29,7 +29,7 @@ export async function getPosts() {
 
   const data = await res.json();
 
-  return data.data.publication.posts.edges;
+  return data?.data?.publication?.posts?.edges ?? [];
 }
 export async function getPost(slug) {
 
@@ -38,6 +38,7 @@ export async function getPost(slug) {
     publication(host: "blog.abitechpros.com") {
       post(slug: "${slug}") {
         title
+        brief
         publishedAt
         coverImage {
           url
@@ -61,5 +62,5 @@ export async function getPost(slug) {
 
   const data = await res.json();
 
-  return data.data.publication.post;
+  return data?.data?.publication?.post ?? null;
 }

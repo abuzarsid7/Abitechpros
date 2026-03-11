@@ -1,14 +1,22 @@
-import { getPost } from "@/lib/hashnode";
+import { getPost, getPosts } from "@/lib/hashnode";
 import { notFound } from "next/navigation";
 
-const SLUG = "solve-it-like-sherlock";
-
-export async function generateMetadata() {
+export async function generateStaticParams() {
   try {
-    const post = await getPost(SLUG);
+    const posts = await getPosts();
+    return posts.map(({ node }) => ({ slug: node.slug }));
+  } catch {
+    return [];
+  }
+}
+
+export async function generateMetadata({ params }) {
+  try {
+    const post = await getPost(params.slug);
     if (!post) return { title: "Post Not Found" };
     return {
       title: `${post.title} | AbiTechPros Blog`,
+      description: post.brief ?? "",
       openGraph: post.coverImage?.url
         ? { images: [{ url: post.coverImage.url }] }
         : undefined,
@@ -18,10 +26,10 @@ export async function generateMetadata() {
   }
 }
 
-export default async function SolveItLikeSherlockPage() {
+export default async function BlogPostPage({ params }) {
   let post;
   try {
-    post = await getPost(SLUG);
+    post = await getPost(params.slug);
   } catch (e) {
     console.error("Failed to fetch post:", e);
     notFound();
