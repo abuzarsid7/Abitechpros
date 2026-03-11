@@ -9,7 +9,7 @@ import { useTheme } from "./ThemeProvider";
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "Tools", href: "/tools" },
-  { label: "Blog", href: "https://abitechpros.com/blog", external: true },
+  { label: "Blog", href: "/blog" },
   { label: "About", href: "/about" },
 ];
 

@@ -6,7 +6,7 @@ import Link from "next/link";
 const pages = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
-  { label: "Blog", href: "https://abitechpros.com/blog", external: true },
+  { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
   { label: "Privacy Policy", href: "/privacy-policy" },
 ];

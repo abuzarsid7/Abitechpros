@@ -32,14 +32,12 @@ export default function HomePage() {
                 <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
               </svg>
             </Link>
-            <a
-              href="https://abitechpros.com/blog"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/blog"
               className="inline-flex items-center gap-1.5 rounded-md border border-line bg-surface text-ink px-5 py-2.5 text-sm font-medium hover:bg-muted transition-colors"
             >
               Read the blog
-            </a>
+            </Link>
           </div>
         </Container>
       </section>
@@ -92,9 +90,8 @@ export default function HomePage() {
                 icon: "📝",
                 title: "Blog",
                 body: "Articles, guides, and tips for developers.",
-                href: "https://abitechpros.com/blog",
+                href: "/blog",
                 cta: "Read articles",
-                external: true,
               },
               {
                 icon: "👋",

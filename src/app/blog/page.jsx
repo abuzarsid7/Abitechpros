@@ -1,6 +1,5 @@
 import { getPosts } from "@/lib/hashnode";
 import Link from "next/link";
-import Image from "next/image";
 
 export const metadata = {
   title: "Blog | AbiTechPros",
@@ -16,46 +15,63 @@ export default async function BlogPage() {
   }
 
   return (
-    <main className="py-12">
-      <div className="max-w-4xl mx-auto px-4">
-        <h1 className="text-3xl font-bold text-ink mb-2">Blog</h1>
-        <p className="text-faint mb-10">Articles, guides, and tips for developers.</p>
+    <main className="py-14">
+      <div className="max-w-3xl mx-auto px-4">
+        {/* Header */}
+        <div className="mb-10">
+          <h1 className="text-4xl font-bold tracking-tight text-ink">Blog</h1>
+          <p className="mt-2 text-base text-faint">Articles, guides, and tips for developers.</p>
+        </div>
 
         {posts.length === 0 ? (
           <p className="text-faint">No posts found.</p>
         ) : (
-          <div className="grid gap-8">
+          <div className="flex flex-col divide-y divide-line">
             {posts.map(({ node }) => (
-              <article key={node.slug} className="flex gap-6 border border-line rounded-xl p-5 bg-surface hover:shadow-sm transition-shadow">
+              <Link
+                key={node.slug}
+                href={`/blog/${node.slug}`}
+                className="group flex flex-col sm:flex-row gap-5 py-7 first:pt-0 last:pb-0 hover:bg-transparent focus-visible:outline-none"
+              >
+                {/* Cover image — visible on all screen sizes */}
                 {node.coverImage?.url && (
-                  <div className="shrink-0 hidden sm:block">
+                  <div className="w-full sm:w-[180px] sm:shrink-0">
                     <img
                       src={node.coverImage.url}
                       alt={node.title}
-                      width={120}
-                      height={80}
-                      className="rounded-lg object-cover w-[120px] h-[80px]"
+                      className="w-full h-44 sm:h-[115px] object-cover rounded-xl transition-transform duration-300 group-hover:scale-[1.02]"
                     />
                   </div>
                 )}
-                <div className="flex flex-col gap-2">
-                  <time className="text-xs text-faint">
-                    {new Date(node.publishedAt).toLocaleDateString("en-US", {
-                      year: "numeric",
-                      month: "long",
-                      day: "numeric",
-                    })}
-                  </time>
-                  <h2 className="text-lg font-semibold text-ink leading-snug">{node.title}</h2>
-                  <p className="text-sm text-faint line-clamp-2">{node.brief}</p>
-                  <Link
-                    href={`/blog/${node.slug}`}
-                    className="mt-1 text-sm font-medium text-blue-600 hover:underline w-fit"
-                  >
+
+                {/* Content */}
+                <div className="flex flex-col justify-between gap-2 min-w-0">
+                  <div className="flex flex-col gap-1.5">
+                    <div className="flex items-center gap-2 text-xs text-faint">
+                      <time>
+                        {new Date(node.publishedAt).toLocaleDateString("en-US", {
+                          year: "numeric",
+                          month: "short",
+                          day: "numeric",
+                        })}
+                      </time>
+                      {node.readTimeInMinutes && (
+                        <>
+                          <span aria-hidden>·</span>
+                          <span>{node.readTimeInMinutes} min read</span>
+                        </>
+                      )}
+                    </div>
+                    <h2 className="text-base font-semibold text-ink leading-snug group-hover:text-blue-600 transition-colors">
+                      {node.title}
+                    </h2>
+                    <p className="text-sm text-faint line-clamp-2 leading-relaxed">{node.brief}</p>
+                  </div>
+                  <span className="text-xs font-medium text-blue-600 group-hover:underline w-fit mt-1">
                     Read more →
-                  </Link>
+                  </span>
                 </div>
-              </article>
+              </Link>
             ))}
           </div>
         )}

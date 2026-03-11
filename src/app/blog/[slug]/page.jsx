@@ -1,5 +1,6 @@
 import { getPost, getPosts } from "@/lib/hashnode";
 import { notFound } from "next/navigation";
+import Link from "next/link";
 
 export async function generateStaticParams() {
   try {
@@ -38,32 +39,77 @@ export default async function BlogPostPage({ params }) {
   if (!post) notFound();
 
   return (
-    <main className="py-12">
-      <article className="max-w-3xl mx-auto px-4">
-        <header className="mb-8">
-          <time className="text-xs text-faint">
+    <main className="py-14">
+      <article className="max-w-2xl mx-auto px-4">
+        {/* Back link */}
+        <Link
+          href="/blog"
+          className="inline-flex items-center gap-1.5 text-sm text-faint hover:text-ink transition-colors mb-8"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="15 18 9 12 15 6" />
+          </svg>
+          Back to blog
+        </Link>
+
+        {/* Meta */}
+        <div className="flex items-center gap-2 text-xs text-faint mb-3">
+          <time>
             {new Date(post.publishedAt).toLocaleDateString("en-US", {
               year: "numeric",
               month: "long",
               day: "numeric",
             })}
           </time>
-          <h1 className="text-3xl font-bold text-ink mt-2 mb-4 leading-tight">
-            {post.title}
-          </h1>
-          {post.coverImage?.url && (
+          {post.readTimeInMinutes && (
+            <>
+              <span aria-hidden>·</span>
+              <span>{post.readTimeInMinutes} min read</span>
+            </>
+          )}
+        </div>
+
+        {/* Title */}
+        <h1 className="text-3xl sm:text-4xl font-bold text-ink leading-tight mb-5">
+          {post.title}
+        </h1>
+
+        {/* Brief / subtitle */}
+        {post.brief && (
+          <p className="text-base text-faint leading-relaxed mb-6 border-l-2 border-line pl-4">
+            {post.brief}
+          </p>
+        )}
+
+        {/* Cover image */}
+        {post.coverImage?.url && (
+          <div className="mb-8 rounded-2xl overflow-hidden">
             <img
               src={post.coverImage.url}
               alt={post.title}
-              className="w-full rounded-xl object-cover max-h-80"
+              className="w-full object-cover max-h-96"
             />
-          )}
-        </header>
+          </div>
+        )}
 
+        {/* Post content */}
         <div
-          className="prose prose-neutral dark:prose-invert max-w-none"
+          className="prose prose-neutral dark:prose-invert prose-headings:font-semibold prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline prose-img:rounded-xl max-w-none"
           dangerouslySetInnerHTML={{ __html: post.content.html }}
         />
+
+        {/* Footer nav */}
+        <div className="mt-12 pt-6 border-t border-line">
+          <Link
+            href="/blog"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-faint hover:text-ink transition-colors"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+            All posts
+          </Link>
+        </div>
       </article>
     </main>
   );

@@ -9,6 +9,7 @@ export async function getPosts() {
             brief
             slug
             publishedAt
+            readTimeInMinutes
             coverImage {
               url
             }
@@ -40,6 +41,7 @@ export async function getPost(slug) {
         title
         brief
         publishedAt
+        readTimeInMinutes
         coverImage {
           url
         }
