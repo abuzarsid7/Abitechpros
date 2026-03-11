@@ -6,7 +6,7 @@ import ThemeProvider from "@/components/layout/ThemeProvider";
 export const metadata = {
   title: "AbiTechPros",
   description: "Developer tools and tech blogs for solving problems faster.",
-  keywords: ["developer tools", "tech blog", "coding tools"],
+  keywords: ["developer tools", "tech blog", "coding tools","online tools"],
   metadataBase: new URL("https://abitechpros.com"),
 };
 
