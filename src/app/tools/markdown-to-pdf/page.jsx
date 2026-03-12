@@ -6,6 +6,9 @@ import ToolSection from "@/components/tools/ToolSection";
 import ToolLabel from "@/components/tools/ToolLabel";
 import ToolActions, { ToolButton } from "@/components/tools/ToolActions";
 import ToolCopyButton from "@/components/tools/ToolCopyButton";
+import { useToolAnalytics, useTextStats } from "@/hooks";
+
+const TOOL_SLUG = "markdown-to-pdf";
 
 // ─── Lightweight Markdown → HTML parser ────────────────────────────────────
 function escapeHtml(str) {
@@ -266,20 +269,21 @@ export default function MarkdownToPdfPage() {
   const [view, setView] = useState("split"); // "editor" | "preview" | "split"
 
   const html = markdownToHtml(markdown);
+  const { trackRun, trackDownloaded, trackEvent } = useToolAnalytics(TOOL_SLUG);
+  const { words: wordCount, characters: charCount } = useTextStats(markdown);
 
-  const handleExport = useCallback(
-    () => exportToPdf(html, docTitle),
-    [html, docTitle]
-  );
+  const handleExport = useCallback(() => {
+    trackRun({ input_length: markdown.length });
+    trackDownloaded({ file_format: "pdf" });
+    exportToPdf(html, docTitle);
+  }, [html, docTitle, markdown.length, trackRun, trackDownloaded]);
 
   const handleClear = () => {
-    if (window.confirm("Clear the editor?")) setMarkdown("");
+    if (window.confirm("Clear the editor?")) {
+      trackEvent("tool_clear");
+      setMarkdown("");
+    }
   };
-
-  const wordCount = markdown.trim()
-    ? markdown.trim().split(/\s+/).length
-    : 0;
-  const charCount = markdown.length;
 
   return (
     <ToolLayout

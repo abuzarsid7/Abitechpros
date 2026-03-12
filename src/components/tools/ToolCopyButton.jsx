@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useClipboard, useToolAnalytics } from "@/hooks";
 
 /**
  * ToolCopyButton — copies `value` to clipboard with visual feedback.
@@ -9,28 +9,15 @@ import { useState } from "react";
  *   value    string  — text to copy
  *   size     "sm" | "md"  (default: "sm")
  *   label    string  — button label (default: "Copy")
+ *   toolSlug string  — optional override; auto-detected from URL if omitted
  */
-export default function ToolCopyButton({ value = "", size = "sm", label = "Copy" }) {
-  const [copied, setCopied] = useState(false);
+export default function ToolCopyButton({ value = "", size = "sm", label = "Copy", toolSlug = null }) {
+  const { trackCopied } = useToolAnalytics(toolSlug);
+  const { copy, copied } = useClipboard({
+    onCopy: () => trackCopied({ copy_label: label }),
+  });
 
-  const handleCopy = async () => {
-    if (!value) return;
-    try {
-      await navigator.clipboard.writeText(value);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch {
-      // Fallback for older browsers
-      const el = document.createElement("textarea");
-      el.value = value;
-      document.body.appendChild(el);
-      el.select();
-      document.execCommand("copy");
-      document.body.removeChild(el);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    }
-  };
+  const handleCopy = () => copy(value);
 
   const sizeClass = size === "md" ? "px-3.5 py-1.5 text-sm" : "px-2.5 py-1 text-xs";
 

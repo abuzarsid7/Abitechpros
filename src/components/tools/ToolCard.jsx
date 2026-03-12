@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { trackToolUsed, toolSlugFromPath } from "@/lib/analytics";
 
 /**
  * ToolCard — displays a single tool in a grid.
@@ -11,9 +14,15 @@ import Link from "next/link";
  *   badge       string   (optional) — e.g. "New", "Beta"
  */
 export default function ToolCard({ title, description, href, icon = null, badge = null }) {
+  const handleClick = () => {
+    const slug = toolSlugFromPath(href);
+    if (slug) trackToolUsed(slug);
+  };
+
   return (
     <Link
       href={href}
+      onClick={handleClick}
       className="group flex flex-col gap-3 rounded-xl border border-line bg-surface p-5 transition-colors duration-150 hover:border-ink hover:bg-subtle"
     >
       {/* Top row: icon + badge */}

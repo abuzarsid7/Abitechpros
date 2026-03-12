@@ -1,5 +1,5 @@
 import Container from "@/components/layout/Container";
-import ToolCard from "@/components/tools/ToolCard";
+import ToolSearchGrid from "@/components/tools/ToolSearchGrid";
 import { tools, categories } from "@/data/tools";
 
 export const metadata = {
@@ -18,29 +18,8 @@ export default function ToolsPage() {
         </p>
       </div>
 
-      {/* Tools grouped by category */}
-      {categories.map((cat) => {
-        const catTools = tools.filter((t) => t.category === cat);
-        return (
-          <div key={cat} className="mb-10">
-            <h2 className="mb-4 text-xs font-semibold uppercase tracking-widest text-faint">
-              {cat}
-            </h2>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {catTools.map((tool) => (
-                <ToolCard
-                  key={tool.id}
-                  title={tool.title}
-                  description={tool.description}
-                  href={tool.href}
-                  icon={tool.icon}
-                  badge={tool.badge}
-                />
-              ))}
-            </div>
-          </div>
-        );
-      })}
+      {/* Searchable tool grid */}
+      <ToolSearchGrid tools={tools} categories={categories} />
     </Container>
   );
 }
