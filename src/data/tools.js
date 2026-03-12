@@ -44,6 +44,15 @@ export const tools = [
     icon: "🔢",
     category: "Text",
   },
+  {
+    id: "Base64-Encoder-Decoder",
+    title: "Base64 Encoder / Decoder",
+    description: "Encode text to Base64 or decode Base64 strings back to plain text with Unicode support.",
+    href: "/tools/Base64-Encoder-Decoder",
+    icon: "🔤",
+    badge: "New",
+    category: "Text",
+  },
 ];
 
 /** Unique list of categories, preserving order of first appearance. */
