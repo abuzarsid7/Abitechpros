@@ -8,7 +8,7 @@ import ToolActions, { ToolButton } from "@/components/tools/ToolActions";
 import ToolCopyButton from "@/components/tools/ToolCopyButton";
 import { useToolAnalytics } from "@/hooks";
 
-const TOOL_SLUG = "Base64-Encoder-Decoder";
+const TOOL_SLUG = "base64-encoder-decoder";
 
 // ─── Encode / Decode helpers ────────────────────────────────────────────────
 function encodeBase64(input) {

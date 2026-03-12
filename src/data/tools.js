@@ -45,10 +45,10 @@ export const tools = [
     category: "Text",
   },
   {
-    id: "Base64-Encoder-Decoder",
+    id: "base64-encoder-decoder",
     title: "Base64 Encoder / Decoder",
     description: "Encode text to Base64 or decode Base64 strings back to plain text with Unicode support.",
-    href: "/tools/Base64-Encoder-Decoder",
+    href: "/tools/base64-encoder-decoder",
     icon: "🔤",
     badge: "New",
     category: "Text",
