@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import BlogPostHeader from "@/components/blog/BlogPostHeader";
 import BlogPostContent from "@/components/blog/BlogPostContent";
+import JsonLd from "@/components/JsonLd";
 
 export async function generateStaticParams() {
   try {
@@ -20,6 +21,7 @@ export async function generateMetadata({ params }) {
     return {
       title: `${post.title} | AbiTechPros Blog`,
       description: post.brief ?? "",
+      alternates: { canonical: `https://abitechpros.com/blog/${params.slug}` },
       openGraph: post.coverImage?.url
         ? { images: [{ url: post.coverImage.url }] }
         : undefined,
@@ -42,6 +44,34 @@ export default async function BlogPostPage({ params }) {
 
   return (
     <main className="py-14">
+      <JsonLd
+        data={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            headline: post.title,
+            description: post.brief ?? "",
+            url: `https://abitechpros.com/blog/${params.slug}`,
+            ...(post.coverImage?.url ? { image: post.coverImage.url } : {}),
+            datePublished: post.publishedAt,
+            author: { "@type": "Organization", name: "AbiTechPros" },
+            publisher: {
+              "@type": "Organization",
+              name: "AbiTechPros",
+              logo: { "@type": "ImageObject", url: "https://abitechpros.com/icons/logo.png" },
+            },
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: "https://abitechpros.com" },
+              { "@type": "ListItem", position: 2, name: "Blog", item: "https://abitechpros.com/blog" },
+              { "@type": "ListItem", position: 3, name: post.title, item: `https://abitechpros.com/blog/${params.slug}` },
+            ],
+          },
+        ]}
+      />
       <article className="max-w-2xl mx-auto px-4">
         {/* Back link */}
         <Link

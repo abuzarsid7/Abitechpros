@@ -1,9 +1,30 @@
 import { getPosts } from "@/lib/hashnode";
 import Link from "next/link";
+import JsonLd from "@/components/JsonLd";
+
+const BLOG_SCHEMA = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    name: "AbiTechPros Blog",
+    description: "Articles, guides, and tips for developers.",
+    url: "https://abitechpros.com/blog",
+    publisher: { "@type": "Organization", name: "AbiTechPros", url: "https://abitechpros.com" },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://abitechpros.com" },
+      { "@type": "ListItem", position: 2, name: "Blog", item: "https://abitechpros.com/blog" },
+    ],
+  },
+];
 
 export const metadata = {
   title: "Blog | AbiTechPros",
   description: "Articles, guides, and tips for developers.",
+  alternates: { canonical: "https://abitechpros.com/blog" },
 };
 
 export default async function BlogPage() {
@@ -16,6 +37,7 @@ export default async function BlogPage() {
 
   return (
     <main className="py-14">
+      <JsonLd data={BLOG_SCHEMA} />
       <div className="max-w-3xl mx-auto px-4">
         {/* Header */}
         <div className="mb-10">

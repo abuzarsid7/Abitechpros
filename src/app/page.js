@@ -3,6 +3,12 @@ import Container from "@/components/layout/Container";
 import ToolCard from "@/components/tools/ToolCard";
 import { tools } from "@/data/tools";
 
+export const metadata = {
+  title: "AbiTechPros – Free Developer Tools & Tech Blog",
+  description: "Free browser-based developer tools and tech articles. No sign-up required.",
+  alternates: { canonical: "https://abitechpros.com" },
+};
+
 export default function HomePage() {
   const featuredTools = tools.slice(0, 3);
 

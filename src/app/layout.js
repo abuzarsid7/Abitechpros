@@ -6,9 +6,12 @@ import ThemeProvider from "@/components/layout/ThemeProvider";
 import AnalyticsTracker from "@/components/AnalyticsTracker";
 
 export const metadata = {
-  title: "AbiTechPros",
-  description: "Developer tools and tech blogs for solving problems faster.",
-  keywords: ["developer tools", "tech blog", "coding tools","online tools"],
+  title: {
+    template: "%s | AbiTechPros",
+    default: "AbiTechPros – Free Developer Tools & Tech Blog",
+  },
+  description: "Free browser-based developer tools and tech articles. No sign-up required.",
+  keywords: ["developer tools", "free online tools", "tech blog", "coding utilities"],
   metadataBase: new URL("https://abitechpros.com"),
 };
 
@@ -28,6 +31,33 @@ export default function RootLayout({ children }) {
         <link
           href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:opsz,wght@14..32,100..900&family=Poppins:wght@300;400&display=swap"
           rel="stylesheet"
+        />
+        {/* Structured data: WebSite + Organization */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                name: "AbiTechPros",
+                url: "https://abitechpros.com",
+                description: "Free browser-based developer tools and tech articles.",
+                potentialAction: {
+                  "@type": "SearchAction",
+                  target: "https://abitechpros.com/tools?q={search_term_string}",
+                  "query-input": "required name=search_term_string",
+                },
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                name: "AbiTechPros",
+                url: "https://abitechpros.com",
+                logo: "https://abitechpros.com/icons/logo.png",
+              },
+            ]),
+          }}
         />
       </head>
       <body>
