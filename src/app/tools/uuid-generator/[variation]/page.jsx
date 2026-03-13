@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { tools } from "@/data/tools";
+import ToolVariationIntro from "@/components/tools/ToolVariationIntro";
 import UuidGeneratorPage from "../page";
 import {
 	buildToolVariationMetadata,
@@ -22,5 +23,10 @@ export function generateMetadata({ params }) {
 
 export default function UuidGeneratorVariationPage({ params }) {
 	if (!isSupportedToolVariation(TOOL.id, params.variation)) notFound();
-	return <UuidGeneratorPage />;
+	return (
+		<>
+			<ToolVariationIntro tool={TOOL} variation={params.variation} />
+			<UuidGeneratorPage />
+		</>
+	);
 }

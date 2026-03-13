@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { tools } from "@/data/tools";
+import ToolVariationIntro from "@/components/tools/ToolVariationIntro";
 import Base64ToolPage from "../page";
 import {
 	buildToolVariationMetadata,
@@ -22,5 +23,10 @@ export function generateMetadata({ params }) {
 
 export default function Base64VariationPage({ params }) {
 	if (!isSupportedToolVariation(TOOL.id, params.variation)) notFound();
-	return <Base64ToolPage />;
+	return (
+		<>
+			<ToolVariationIntro tool={TOOL} variation={params.variation} />
+			<Base64ToolPage />
+		</>
+	);
 }

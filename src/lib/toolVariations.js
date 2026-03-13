@@ -84,18 +84,18 @@ export function buildToolVariationMetadata({ tool, variation }) {
 	const variationUrl = `${BASE_URL}${tool.href}/${variation}`;
 	const variationTerm = variation.replace(/-/g, " ");
 	const title = `${tool.title} – ${variationLabel} | AbiTechPros`;
-	const description = `${tool.description} Access the ${variationTerm} variation on AbiTechPros with no sign-up required.`;
+	const description = `Use the ${variationLabel.toLowerCase()} tool to ${variationTerm}. ${tool.description}`;
 
 	return {
 		title,
 		description,
 		alternates: { canonical: variationUrl },
 		keywords: [
-			`${tool.title.toLowerCase()} ${variationTerm}`,
-			`${tool.title.toLowerCase()} online`,
-			`free ${tool.title.toLowerCase()}`,
-			"browser based tools",
-			"AbiTechPros",
+			variationTerm,
+			`${variationTerm} tool`,
+			`${variationTerm} online`,
+			tool.title,
+			`${tool.title} tool`,
 		],
 		openGraph: {
 			title,
