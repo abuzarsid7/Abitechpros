@@ -5,6 +5,8 @@ import Footer from "@/components/layout/Footer";
 import ThemeProvider from "@/components/layout/ThemeProvider";
 import AnalyticsTracker from "@/components/AnalyticsTracker";
 
+const BASE_URL = "https://abitechpros.com";
+
 export const metadata = {
   title: {
     template: "%s | AbiTechPros",
@@ -12,7 +14,9 @@ export const metadata = {
   },
   description: "Free browser-based developer tools and tech articles. No sign-up required.",
   keywords: ["developer tools", "free online tools", "tech blog", "coding utilities"],
-  metadataBase: new URL("https://abitechpros.com"),
+  metadataBase: new URL(BASE_URL),
+  creator: "Abuzar Siddiqui",
+  authors: [{ name: "Abuzar Siddiqui", url: "https://github.com/abuzarsid7" }],
 };
 
 export default function RootLayout({ children }) {
@@ -41,11 +45,14 @@ export default function RootLayout({ children }) {
                 "@context": "https://schema.org",
                 "@type": "WebSite",
                 name: "AbiTechPros",
-                url: "https://abitechpros.com",
+                url: BASE_URL,
                 description: "Free browser-based developer tools and tech articles.",
                 potentialAction: {
                   "@type": "SearchAction",
-                  target: "https://abitechpros.com/tools?q={search_term_string}",
+                  target: {
+                    "@type": "EntryPoint",
+                    urlTemplate: `${BASE_URL}/tools?q={search_term_string}`,
+                  },
                   "query-input": "required name=search_term_string",
                 },
               },
@@ -53,8 +60,8 @@ export default function RootLayout({ children }) {
                 "@context": "https://schema.org",
                 "@type": "Organization",
                 name: "AbiTechPros",
-                url: "https://abitechpros.com",
-                logo: "https://abitechpros.com/icons/logo.png",
+                url: BASE_URL,
+                logo: `${BASE_URL}/icons/logo.png`,
               },
             ]),
           }}

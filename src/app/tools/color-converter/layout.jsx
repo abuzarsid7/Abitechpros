@@ -1,4 +1,8 @@
 import JsonLd from "@/components/JsonLd";
+import RelatedToolsSection from "@/components/tools/RelatedToolsSection";
+import FaqSection from "@/components/ui/FaqSection";
+import { createToolStructuredData } from "@/lib/seo";
+import { getToolFaqItems } from "@/lib/seo";
 
 const DESCRIPTION = "Convert colors between HEX, RGB, HSL, CMYK, and HSB formats instantly with a live colour preview. Free online colour converter — no sign-up needed.";
 const TITLE = "Color Converter – HEX, RGB, HSL & CMYK";
@@ -25,34 +29,15 @@ export const metadata = {
 };
 
 const NAME = "Color Converter";
+const FAQ_ITEMS = getToolFaqItems({ name: NAME, description: DESCRIPTION });
 
 export default function Layout({ children }) {
   return (
     <>
-      <JsonLd
-        data={[
-          {
-            "@context": "https://schema.org",
-            "@type": "WebApplication",
-            name: NAME,
-            description: DESCRIPTION,
-            url: URL,
-            applicationCategory: "DesignApplication",
-            operatingSystem: "Any",
-            offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            itemListElement: [
-              { "@type": "ListItem", position: 1, name: "Home", item: "https://abitechpros.com" },
-              { "@type": "ListItem", position: 2, name: "Tools", item: "https://abitechpros.com/tools" },
-              { "@type": "ListItem", position: 3, name: NAME, item: URL },
-            ],
-          },
-        ]}
-      />
+      <JsonLd data={createToolStructuredData({ name: NAME, description: DESCRIPTION, url: URL, applicationCategory: "DesignApplication" })} />
       {children}
+      <FaqSection title={`${NAME} FAQ`} items={FAQ_ITEMS} />
+      <RelatedToolsSection currentUrl={URL} />
     </>
   );
 }

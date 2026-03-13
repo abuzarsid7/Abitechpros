@@ -11,11 +11,13 @@ import { useToolSearch } from "@/hooks";
  * Props:
  *   tools      — full tool list from the registry
  *   categories — ordered unique category list
+ *   initialQuery — search term from the URL, if present
  */
-export default function ToolSearchGrid({ tools, categories }) {
+export default function ToolSearchGrid({ tools, categories, initialQuery = "" }) {
   const { query, setQuery, filteredTools, visibleCategories } = useToolSearch({
     tools,
     categories,
+    initialQuery,
   });
 
   return (
@@ -40,9 +42,11 @@ export default function ToolSearchGrid({ tools, categories }) {
           </svg>
           <input
             type="search"
+            name="q"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search tools…"
+            aria-label="Search tools"
             className="w-full rounded-lg border border-line bg-surface py-2 pl-10 pr-4 text-sm text-ink placeholder:text-faint outline-none focus:border-ink focus:ring-1 focus:ring-ink transition"
           />
         </div>

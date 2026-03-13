@@ -1,7 +1,11 @@
 import Container from "@/components/layout/Container";
 import ToolSearchGrid from "@/components/tools/ToolSearchGrid";
+import FaqSection from "@/components/ui/FaqSection";
 import { tools, categories } from "@/data/tools";
 import JsonLd from "@/components/JsonLd";
+import { createToolsPageFaqSchema, getToolsPageFaqItems } from "@/lib/seo";
+
+const TOOLS_FAQ_ITEMS = getToolsPageFaqItems();
 
 const TOOLS_SCHEMA = [
   {
@@ -19,15 +23,46 @@ const TOOLS_SCHEMA = [
       { "@type": "ListItem", position: 2, name: "Tools", item: "https://abitechpros.com/tools" },
     ],
   },
+  createToolsPageFaqSchema(),
 ];
 
 export const metadata = {
   title: "Free Online Developer Tools",
   description: "A growing collection of free browser-based developer tools — no sign-up required. Password generators, JSON formatters, QR code generators, and more.",
   alternates: { canonical: "https://abitechpros.com/tools" },
+  keywords: [
+    "free online developer tools",
+    "browser based tools",
+    "password generator",
+    "JSON formatter",
+    "base64 encoder decoder",
+    "QR code generator",
+    "text counter",
+    "UUID generator",
+    "color converter",
+    "image compressor",
+    "timestamp converter",
+    "markdown to PDF",
+    "free coding utilities",
+    "no sign-up tools",
+  ],
+  openGraph: {
+    title: "Free Online Developer Tools",
+    description: "A growing collection of free browser-based developer tools — no sign-up required. Password generators, JSON formatters, QR code generators, and more.",
+    url: "https://abitechpros.com/tools",
+    siteName: "AbiTechPros",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Free Online Developer Tools",
+    description: "A growing collection of free browser-based developer tools — no sign-up required. Password generators, JSON formatters, QR code generators, and more.",
+  },
 };
 
-export default function ToolsPage() {
+export default function ToolsPage({ searchParams }) {
+  const initialQuery = typeof searchParams?.q === "string" ? searchParams.q : "";
+
   return (
     <Container size="lg" as="section" className="py-12">
       <JsonLd data={TOOLS_SCHEMA} />
@@ -40,7 +75,9 @@ export default function ToolsPage() {
       </div>
 
       {/* Searchable tool grid */}
-      <ToolSearchGrid tools={tools} categories={categories} />
+      <ToolSearchGrid tools={tools} categories={categories} initialQuery={initialQuery} />
+
+      <FaqSection title="Tools FAQ" items={TOOLS_FAQ_ITEMS} size="lg" />
     </Container>
   );
 }

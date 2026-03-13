@@ -25,6 +25,28 @@ export const metadata = {
   title: "Blog | AbiTechPros",
   description: "Articles, guides, and tips for developers.",
   alternates: { canonical: "https://abitechpros.com/blog" },
+  keywords: [
+    "tech blog",
+    "developer articles",
+    "programming guides",
+    "web development tips",
+    "coding tutorials",
+    "AbiTechPros blog",
+    "developer tips and tricks",
+    "software engineering articles",
+  ],
+  openGraph: {
+    title: "Blog | AbiTechPros",
+    description: "Articles, guides, and tips for developers.",
+    url: "https://abitechpros.com/blog",
+    siteName: "AbiTechPros",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Blog | AbiTechPros",
+    description: "Articles, guides, and tips for developers.",
+  },
 };
 
 export default async function BlogPage() {

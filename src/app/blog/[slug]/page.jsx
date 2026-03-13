@@ -22,9 +22,23 @@ export async function generateMetadata({ params }) {
       title: `${post.title} | AbiTechPros Blog`,
       description: post.brief ?? "",
       alternates: { canonical: `https://abitechpros.com/blog/${params.slug}` },
-      openGraph: post.coverImage?.url
-        ? { images: [{ url: post.coverImage.url }] }
-        : undefined,
+      keywords: post.tags?.length
+        ? post.tags.map((t) => t.name)
+        : ["tech blog", "developer articles", "AbiTechPros", "programming"],
+      openGraph: {
+        title: `${post.title} | AbiTechPros Blog`,
+        description: post.brief ?? "",
+        url: `https://abitechpros.com/blog/${params.slug}`,
+        siteName: "AbiTechPros",
+        type: "article",
+        ...(post.coverImage?.url ? { images: [{ url: post.coverImage.url }] } : {}),
+      },
+      twitter: {
+        card: post.coverImage?.url ? "summary_large_image" : "summary",
+        title: `${post.title} | AbiTechPros Blog`,
+        description: post.brief ?? "",
+        ...(post.coverImage?.url ? { images: [post.coverImage.url] } : {}),
+      },
     };
   } catch {
     return { title: "Blog | AbiTechPros" };

@@ -10,6 +10,7 @@
  *   icon        string  — emoji or short text for the card icon
  *   badge       string? — optional e.g. "New", "Beta"
  *   category    string  — used to group cards on the listing page
+ *   relatedIds   string[] — curated internal links to related tools
  */
 export const tools = [
   {
@@ -19,6 +20,7 @@ export const tools = [
     href: "/tools/markdown-to-pdf",
     icon: "📄",
     category: "Document",
+    relatedIds: ["text-counter", "json-formatter", "image-compressor"],
   },
   {
     id: "password-generator",
@@ -27,6 +29,7 @@ export const tools = [
     href: "/tools/password-generator",
     icon: "🔑",
     category: "Security",
+    relatedIds: ["uuid-generator", "qr-code-generator", "base64-encoder-decoder"],
   },
   {
     id: "qr-code-generator",
@@ -35,6 +38,7 @@ export const tools = [
     href: "/tools/qr-code-generator",
     icon: "📱",
     category: "Utility",
+    relatedIds: ["color-converter", "uuid-generator", "password-generator"],
   },
   {
     id: "text-counter",
@@ -43,6 +47,7 @@ export const tools = [
     href: "/tools/text-counter",
     icon: "🔢",
     category: "Text",
+    relatedIds: ["markdown-to-pdf", "base64-encoder-decoder", "json-formatter"],
   },
   {
     id: "base64-encoder-decoder",
@@ -52,6 +57,7 @@ export const tools = [
     icon: "🔤",
     badge: "New",
     category: "Text",
+    relatedIds: ["json-formatter", "text-counter", "uuid-generator"],
   },
   {
     id: "color-converter",
@@ -61,6 +67,7 @@ export const tools = [
     icon: "🎨",
     badge: "New",
     category: "Design",
+    relatedIds: ["image-compressor", "qr-code-generator", "markdown-to-pdf"],
   },
   {
     id: "image-compressor",
@@ -70,6 +77,7 @@ export const tools = [
     icon: "🖼️",
     badge: "New",
     category: "Media",
+    relatedIds: ["color-converter", "markdown-to-pdf", "qr-code-generator"],
   },
   {
     id: "json-formatter",
@@ -79,6 +87,7 @@ export const tools = [
     icon: "{ }",
     badge: "New",
     category: "Developer",
+    relatedIds: ["base64-encoder-decoder", "timestamp-converter", "uuid-generator"],
   },
   {
     id: "timestamp-converter",
@@ -88,6 +97,7 @@ export const tools = [
     icon: "⏱️",
     badge: "New",
     category: "Developer",
+    relatedIds: ["uuid-generator", "json-formatter", "qr-code-generator"],
   },
   {
     id: "uuid-generator",
@@ -97,8 +107,39 @@ export const tools = [
     icon: "🆔",
     badge: "New",
     category: "Developer",
+    relatedIds: ["timestamp-converter", "json-formatter", "password-generator"],
   },
 ];
+
+const toolMap = new Map(tools.map((tool) => [tool.id, tool]));
+
+export function getToolByHref(href) {
+  return tools.find((tool) => tool.href === href) ?? null;
+}
+
+export function getRelatedTools(currentTool, limit = 3) {
+  if (!currentTool) return [];
+
+  const explicitRelated = (currentTool.relatedIds ?? [])
+    .map((id) => toolMap.get(id))
+    .filter(Boolean);
+
+  const sameCategory = tools.filter(
+    (tool) =>
+      tool.id !== currentTool.id &&
+      tool.category === currentTool.category &&
+      !(currentTool.relatedIds ?? []).includes(tool.id)
+  );
+
+  const otherTools = tools.filter(
+    (tool) =>
+      tool.id !== currentTool.id &&
+      tool.category !== currentTool.category &&
+      !(currentTool.relatedIds ?? []).includes(tool.id)
+  );
+
+  return [...explicitRelated, ...sameCategory, ...otherTools].slice(0, limit);
+}
 
 /** Unique list of categories, preserving order of first appearance. */
 export const categories = [...new Set(tools.map((t) => t.category))];

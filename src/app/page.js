@@ -7,6 +7,29 @@ export const metadata = {
   title: "AbiTechPros – Free Developer Tools & Tech Blog",
   description: "Free browser-based developer tools and tech articles. No sign-up required.",
   alternates: { canonical: "https://abitechpros.com" },
+  keywords: [
+    "AbiTechPros",
+    "free developer tools",
+    "online tools for developers",
+    "browser based tools",
+    "coding utilities",
+    "tech blog",
+    "developer utilities",
+    "free web tools",
+    "no sign-up tools",
+  ],
+  openGraph: {
+    title: "AbiTechPros – Free Developer Tools & Tech Blog",
+    description: "Free browser-based developer tools and tech articles. No sign-up required.",
+    url: "https://abitechpros.com",
+    siteName: "AbiTechPros",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "AbiTechPros – Free Developer Tools & Tech Blog",
+    description: "Free browser-based developer tools and tech articles. No sign-up required.",
+  },
 };
 
 export default function HomePage() {

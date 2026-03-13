@@ -23,6 +23,25 @@ export const metadata = {
   title: "Contact — AbiTechPros",
   description: "Get in touch with the AbiTechPros team.",
   alternates: { canonical: "https://abitechpros.com/contact" },
+  keywords: [
+    "contact AbiTechPros",
+    "AbiTechPros support",
+    "get in touch",
+    "developer tools feedback",
+    "AbiTechPros email",
+  ],
+  openGraph: {
+    title: "Contact — AbiTechPros",
+    description: "Get in touch with the AbiTechPros team.",
+    url: "https://abitechpros.com/contact",
+    siteName: "AbiTechPros",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Contact — AbiTechPros",
+    description: "Get in touch with the AbiTechPros team.",
+  },
 };
 
 export default function ContactPage() {
