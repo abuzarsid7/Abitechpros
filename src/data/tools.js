@@ -143,3 +143,15 @@ export function getRelatedTools(currentTool, limit = 3) {
 
 /** Unique list of categories, preserving order of first appearance. */
 export const categories = [...new Set(tools.map((t) => t.category))];
+
+export function categoryToSlug(category) {
+  return category.toLowerCase().replace(/\s+/g, "-");
+}
+
+export function slugToCategory(categorySlug) {
+  return categories.find((category) => categoryToSlug(category) === categorySlug) ?? null;
+}
+
+export function getToolsByCategory(category) {
+  return tools.filter((tool) => tool.category === category);
+}

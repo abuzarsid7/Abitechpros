@@ -1,5 +1,6 @@
 import Container from "@/components/layout/Container";
 import ToolSearchGrid from "@/components/tools/ToolSearchGrid";
+import ToolsLandingContent from "@/components/tools/ToolsLandingContent";
 import FaqSection from "@/components/ui/FaqSection";
 import { tools, categories } from "@/data/tools";
 import JsonLd from "@/components/JsonLd";
@@ -76,6 +77,8 @@ export default function ToolsPage({ searchParams }) {
 
       {/* Searchable tool grid */}
       <ToolSearchGrid tools={tools} categories={categories} initialQuery={initialQuery} />
+
+      <ToolsLandingContent tools={tools} categories={categories} />
 
       <FaqSection title="Tools FAQ" items={TOOLS_FAQ_ITEMS} size="lg" />
     </Container>

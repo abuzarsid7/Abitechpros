@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Container from "@/components/layout/Container";
 import ToolCard from "@/components/tools/ToolCard";
+import QuickLinksStrip from "@/components/home/QuickLinksStrip";
 import { tools } from "@/data/tools";
 
 export const metadata = {
@@ -103,64 +104,7 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* ── Quick-links strip ───────────────────────────────── */}
-      <section className="border-t border-line py-12">
-        <Container size="lg">
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
-            {[
-              {
-                icon: "🛠️",
-                title: "All Tools",
-                body: "Browse every utility we offer, organised by category.",
-                href: "/tools",
-                cta: "Explore",
-              },
-              {
-                icon: "📝",
-                title: "Blog",
-                body: "Articles, guides, and tips for developers.",
-                href: "/blog",
-                cta: "Read articles",
-              },
-              {
-                icon: "👋",
-                title: "About",
-                body: "Learn about AbiTechPros and what we're building.",
-                href: "/about",
-                cta: "Learn more",
-              },
-            ].map(({ icon, title, body, href, cta, external }) => (
-              <div
-                key={href}
-                className="flex flex-col gap-3 rounded-xl border border-line bg-surface p-5"
-              >
-                <span className="text-2xl">{icon}</span>
-                <div>
-                  <h3 className="text-sm font-semibold text-ink">{title}</h3>
-                  <p className="mt-1 text-xs text-faint leading-relaxed">{body}</p>
-                </div>
-                {external ? (
-                  <a
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-auto text-xs font-medium text-dim hover:text-ink transition-colors"
-                  >
-                    {cta} →
-                  </a>
-                ) : (
-                  <Link
-                    href={href}
-                    className="mt-auto text-xs font-medium text-dim hover:text-ink transition-colors"
-                  >
-                    {cta} →
-                  </Link>
-                )}
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
+      <QuickLinksStrip />
     </main>
   );
 }

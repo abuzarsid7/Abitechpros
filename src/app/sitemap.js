@@ -1,4 +1,4 @@
-import { tools } from "@/data/tools";
+import { categories, categoryToSlug, tools } from "@/data/tools";
 import { getPosts } from "@/lib/hashnode";
 
 const BASE_URL = "https://abitechpros.com";
@@ -18,6 +18,13 @@ const toolRoutes = tools.map((tool) => ({
   priority: 0.8,
 }));
 
+const toolCategoryRoutes = categories.map((category) => ({
+  url: `${BASE_URL}/tools/category/${categoryToSlug(category)}`,
+  lastModified: new Date(),
+  changeFrequency: "weekly",
+  priority: 0.75,
+}));
+
 export default async function sitemap() {
   // Fetch all blog posts and map to sitemap entries
   let blogRoutes = [];
@@ -33,5 +40,5 @@ export default async function sitemap() {
     // If the Hashnode API is unavailable at build time, skip blog posts
   }
 
-  return [...staticRoutes, ...toolRoutes, ...blogRoutes];
+  return [...staticRoutes, ...toolCategoryRoutes, ...toolRoutes, ...blogRoutes];
 }
