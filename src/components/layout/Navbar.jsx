@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useTheme } from "./ThemeProvider";
+import { categories, categoryToSlug } from "@/data/tools";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -12,6 +13,11 @@ const navLinks = [
   { label: "Blog", href: "/blog" },
   { label: "About", href: "/about" },
 ];
+
+const categoryLinks = categories.map((category) => ({
+  label: category,
+  href: `/tools/category/${categoryToSlug(category)}`,
+}));
 
 function SunIcon() {
   return (
@@ -300,6 +306,40 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
+
+          <div className="mx-auto max-w-6xl px-4 pb-4 sm:px-6">
+            <p className="mb-2 px-3 text-[10px] font-semibold uppercase tracking-widest text-faint">
+              Tool Categories
+            </p>
+            <div className="flex flex-wrap gap-1.5 px-3">
+              {categoryLinks.map(({ label, href }) => (
+                <Link
+                  key={href}
+                  href={href}
+                  className="rounded-full border border-line px-2.5 py-1 text-[11px] font-medium text-dim hover:text-ink hover:border-ink transition-colors"
+                >
+                  {label}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="hidden lg:block border-b border-line/70">
+          <div className="mx-auto flex max-w-6xl items-center gap-2 px-6 py-2 lg:px-8">
+            <span className="text-[10px] font-semibold uppercase tracking-widest text-faint mr-1">
+              Tool Categories
+            </span>
+            {categoryLinks.map(({ label, href }) => (
+              <Link
+                key={href}
+                href={href}
+                className="rounded-full border border-line px-2.5 py-1 text-[11px] font-medium text-dim hover:text-ink hover:border-ink transition-colors"
+              >
+                {label}
+              </Link>
+            ))}
+          </div>
         </div>
       </header>
     </>

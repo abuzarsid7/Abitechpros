@@ -77,6 +77,34 @@ export default function AboutPage() {
         built to speed up your workflow — no sign-up required.
       </p>
 
+      <div className="mt-10 space-y-8">
+        <section className="rounded-xl border border-line bg-surface p-5 sm:p-6">
+          <h2 className="text-base font-semibold text-ink">What AbiTechPros is building</h2>
+          <div className="mt-3 space-y-3 text-sm leading-relaxed text-faint">
+            <p>
+              AbiTechPros focuses on practical utilities that solve real workflow problems for developers, designers,
+              and technical teams. Instead of installing one-off software for simple tasks, users can open a tool,
+              complete the task quickly, and continue shipping.
+            </p>
+            <p>
+              The platform is designed around clarity and speed: concise interfaces, fast interactions, and tools that
+              do one job well. Alongside utilities, the site also publishes technical writing and guides to support
+              everyday engineering work.
+            </p>
+          </div>
+        </section>
+
+        <section className="rounded-xl border border-line bg-surface p-5 sm:p-6">
+          <h2 className="text-base font-semibold text-ink">Our principles</h2>
+          <ul className="mt-3 space-y-2 text-sm leading-relaxed text-faint list-disc pl-5">
+            <li>Free to use tools with no mandatory sign-up.</li>
+            <li>Browser-first workflows for speed and accessibility.</li>
+            <li>Simple, focused interfaces instead of feature overload.</li>
+            <li>Useful technical content that supports real implementation work.</li>
+          </ul>
+        </section>
+      </div>
+
       <div className="mt-10 border-t border-line pt-8">
         <h2 className="text-base font-semibold text-ink">Built by Abuzar Siddiqui</h2>
         <ul className="mt-4 flex flex-col gap-3">
@@ -137,6 +165,14 @@ export default function AboutPage() {
           </li>
         </ul>
       </div>
+
+      <section className="mt-10 rounded-xl border border-line bg-surface p-5 sm:p-6">
+        <h2 className="text-base font-semibold text-ink">For feedback and collaboration</h2>
+        <p className="mt-3 text-sm leading-relaxed text-faint max-w-prose">
+          If you have ideas for new tools, product improvements, bug reports, or collaboration opportunities,
+          reach out any time. AbiTechPros evolves based on practical feedback from people actively building things.
+        </p>
+      </section>
     </Container>
   );
 }

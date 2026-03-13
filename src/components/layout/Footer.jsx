@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { categories, categoryToSlug } from "@/data/tools";
 
 const pages = [
   { label: "Home", href: "/" },
@@ -17,6 +18,11 @@ const tools = [
   { label: "QR Code Generator", href: "/tools/qr-code-generator" },
   { label: "Text Counter", href: "/tools/text-counter" },
 ];
+
+const toolCategories = categories.map((category) => ({
+  label: category,
+  href: `/tools/category/${categoryToSlug(category)}`,
+}));
 
 const socials = [
   {
@@ -157,6 +163,22 @@ export default function Footer() {
                   </svg>
                 </Link>
               </li>
+            </ul>
+
+            <h4 className="mt-6 mb-3 text-[11px] font-semibold uppercase tracking-widest text-faint">
+              Tool Categories
+            </h4>
+            <ul className="flex flex-col gap-2">
+              {toolCategories.map(({ label, href }) => (
+                <li key={href}>
+                  <Link
+                    href={href}
+                    className="text-sm text-dim hover:text-ink transition-colors"
+                  >
+                    {label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
