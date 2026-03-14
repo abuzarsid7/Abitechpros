@@ -7,9 +7,11 @@ import { categories, categoryToSlug } from "@/data/tools";
 const pages = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
+  { label: "Tools", href: "/tools" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
   { label: "Privacy Policy", href: "/privacy-policy" },
+  { label: "Terms of Service", href: "/terms-of-service" },
 ];
 
 const tools = [
