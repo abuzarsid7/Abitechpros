@@ -8,6 +8,8 @@ const DESCRIPTION = "Generate RFC 9562–compliant UUIDs online. Supports v4 (ra
 const TITLE = "UUID Generator – v4 & v7 Free Online";
 const URL = "https://abitechpros.com/tools/uuid-generator";
 
+export const dynamic = "force-static";
+
 export const metadata = {
   title: TITLE,
   description: DESCRIPTION,

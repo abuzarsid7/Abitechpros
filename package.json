@@ -9,13 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@appwrite.io/pink-icons": "^1.0.0",
     "@tailwindcss/postcss": "^4.1.11",
     "@tailwindcss/typography": "^0.5.19",
     "@types/qrcode": "^1.5.6",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
-    "appwrite": "^18.1.1",
     "next": "^15.4.8",
     "postcss": "^8.5.6",
     "qrcode": "^1.5.4",

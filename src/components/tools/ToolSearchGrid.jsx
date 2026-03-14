@@ -1,5 +1,6 @@
 "use client";
 
+import { useSearchParams } from "next/navigation";
 import ToolCard from "@/components/tools/ToolCard";
 import { useToolSearch } from "@/hooks";
 
@@ -11,9 +12,14 @@ import { useToolSearch } from "@/hooks";
  * Props:
  *   tools      — full tool list from the registry
  *   categories — ordered unique category list
- *   initialQuery — search term from the URL, if present
+ *
+ * The initial search query is read from the URL (?q=) via useSearchParams()
+ * so the parent page can stay fully static (force-static).
  */
-export default function ToolSearchGrid({ tools, categories, initialQuery = "" }) {
+export default function ToolSearchGrid({ tools, categories }) {
+  const searchParams = useSearchParams();
+  const initialQuery = searchParams.get("q") ?? "";
+
   const { query, setQuery, filteredTools, visibleCategories } = useToolSearch({
     tools,
     categories,

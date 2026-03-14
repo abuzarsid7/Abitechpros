@@ -4,6 +4,8 @@ import ToolCard from "@/components/tools/ToolCard";
 import QuickLinksStrip from "@/components/home/QuickLinksStrip";
 import { tools } from "@/data/tools";
 
+export const dynamic = "force-static";
+
 export const metadata = {
   title: "AbiTechPros – Free Developer Tools & Tech Blog",
   description: "Free browser-based developer tools and tech articles. No sign-up required.",

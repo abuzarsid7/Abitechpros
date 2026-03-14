@@ -1,6 +1,9 @@
 import { getPosts } from "@/lib/hashnode";
+import Image from "next/image";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
+
+export const revalidate = 3600;
 
 const BLOG_SCHEMA = [
   {
@@ -80,9 +83,14 @@ export default async function BlogPage() {
                 {/* Cover image — visible on all screen sizes */}
                 {node.coverImage?.url && (
                   <div className="w-full sm:w-[180px] sm:shrink-0">
-                    <img
+                    <Image
                       src={node.coverImage.url}
                       alt={node.title}
+                      width={800}
+                      height={400}
+                      loading="lazy"
+                      unoptimized
+                      sizes="(max-width: 640px) 100vw, 180px"
                       className="w-full h-44 sm:h-[115px] object-cover rounded-xl transition-transform duration-300 group-hover:scale-[1.02]"
                     />
                   </div>

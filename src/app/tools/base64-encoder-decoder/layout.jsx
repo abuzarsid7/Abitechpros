@@ -8,6 +8,8 @@ const DESCRIPTION = "Encode plain text to Base64 or decode Base64 strings back t
 const TITLE = "Base64 Encode & Decode Online";
 const URL = "https://abitechpros.com/tools/base64-encoder-decoder";
 
+export const dynamic = "force-static";
+
 export const metadata = {
   title: TITLE,
   description: DESCRIPTION,

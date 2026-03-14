@@ -8,6 +8,8 @@ const DESCRIPTION = "Convert colors between HEX, RGB, HSL, CMYK, and HSB formats
 const TITLE = "Color Converter – HEX, RGB, HSL & CMYK";
 const URL = "https://abitechpros.com/tools/color-converter";
 
+export const dynamic = "force-static";
+
 export const metadata = {
   title: TITLE,
   description: DESCRIPTION,

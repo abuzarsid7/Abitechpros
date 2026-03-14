@@ -8,6 +8,8 @@ const DESCRIPTION = "Format, validate, and minify JSON online with syntax highli
 const TITLE = "JSON Formatter, Validator & Minifier";
 const URL = "https://abitechpros.com/tools/json-formatter";
 
+export const dynamic = "force-static";
+
 export const metadata = {
   title: TITLE,
   description: DESCRIPTION,

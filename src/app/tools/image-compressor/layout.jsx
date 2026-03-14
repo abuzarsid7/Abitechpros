@@ -8,6 +8,8 @@ const DESCRIPTION = "Compress and resize JPEG, PNG, and WebP images directly in 
 const TITLE = "Free Image Compressor & Resizer Online";
 const URL = "https://abitechpros.com/tools/image-compressor";
 
+export const dynamic = "force-static";
+
 export const metadata = {
   title: TITLE,
   description: DESCRIPTION,

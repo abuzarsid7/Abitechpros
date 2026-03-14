@@ -8,6 +8,8 @@ const DESCRIPTION = "Convert Unix timestamps to readable dates and back. Support
 const TITLE = "Unix Timestamp Converter Online";
 const URL = "https://abitechpros.com/tools/timestamp-converter";
 
+export const dynamic = "force-static";
+
 export const metadata = {
   title: TITLE,
   description: DESCRIPTION,

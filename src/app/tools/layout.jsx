@@ -1,5 +1,7 @@
 import Container from "@/components/layout/Container";
 
+export const dynamic = "force-static";
+
 /**
  * Shared layout for all /tools/* pages.
  * Adds a subtle top background band and constrains width.

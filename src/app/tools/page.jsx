@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Container from "@/components/layout/Container";
 import ToolSearchGrid from "@/components/tools/ToolSearchGrid";
 import ToolsLandingContent from "@/components/tools/ToolsLandingContent";
@@ -5,6 +6,8 @@ import FaqSection from "@/components/ui/FaqSection";
 import { tools, categories } from "@/data/tools";
 import JsonLd from "@/components/JsonLd";
 import { createToolsPageFaqSchema, getToolsPageFaqItems } from "@/lib/seo";
+
+export const dynamic = "force-static";
 
 const TOOLS_FAQ_ITEMS = getToolsPageFaqItems();
 
@@ -61,8 +64,7 @@ export const metadata = {
   },
 };
 
-export default function ToolsPage({ searchParams }) {
-  const initialQuery = typeof searchParams?.q === "string" ? searchParams.q : "";
+export default function ToolsPage() {
 
   return (
     <Container size="lg" as="section" className="py-12">
@@ -76,7 +78,9 @@ export default function ToolsPage({ searchParams }) {
       </div>
 
       {/* Searchable tool grid */}
-      <ToolSearchGrid tools={tools} categories={categories} initialQuery={initialQuery} />
+      <Suspense fallback={<div className="h-10" />}>
+        <ToolSearchGrid tools={tools} categories={categories} />
+      </Suspense>
 
       <ToolsLandingContent tools={tools} categories={categories} />
 

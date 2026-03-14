@@ -8,6 +8,8 @@ const DESCRIPTION = "Count words, characters, sentences, paragraphs, and reading
 const TITLE = "Word & Character Counter Online";
 const URL = "https://abitechpros.com/tools/text-counter";
 
+export const dynamic = "force-static";
+
 export const metadata = {
   title: TITLE,
   description: DESCRIPTION,

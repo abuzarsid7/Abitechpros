@@ -5,6 +5,8 @@ import BlogPostHeader from "@/components/blog/BlogPostHeader";
 import BlogPostContent from "@/components/blog/BlogPostContent";
 import JsonLd from "@/components/JsonLd";
 
+export const revalidate = 3600;
+
 export async function generateStaticParams() {
   try {
     const posts = await getPosts();

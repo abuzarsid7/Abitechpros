@@ -1,6 +1,8 @@
 import Container from "@/components/layout/Container";
 import JsonLd from "@/components/JsonLd";
 
+export const dynamic = "force-static";
+
 const CONTACT_SCHEMA = [
   {
     "@context": "https://schema.org",

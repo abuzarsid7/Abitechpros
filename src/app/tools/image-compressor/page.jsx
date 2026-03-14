@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback, useRef } from "react";
+import Image from "next/image";
 import ToolLayout from "@/components/tools/ToolLayout";
 import ToolSection from "@/components/tools/ToolSection";
 import ToolLabel from "@/components/tools/ToolLabel";
@@ -311,10 +312,14 @@ export default function ImageCompressorPage() {
 
             {/* Preview */}
             <div className="rounded-lg border border-line overflow-hidden bg-[repeating-conic-gradient(#80808015_0%_25%,transparent_0%_50%)_0_0/16px_16px]">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src={compressed}
                 alt="Compressed preview"
+                width={dimensions.newW || 800}
+                height={dimensions.newH || 600}
+                loading="lazy"
+                unoptimized
+                sizes="(max-width: 640px) 100vw, 50vw"
                 className="w-full h-auto"
               />
             </div>

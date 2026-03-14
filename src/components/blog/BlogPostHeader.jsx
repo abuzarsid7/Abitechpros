@@ -29,9 +29,14 @@ export default function BlogPostHeader({ post }) {
       {/* Cover image */}
       {coverImage?.url && (
         <div className="mb-8 rounded-2xl overflow-hidden border border-line shadow-sm">
-          <img
+          <Image
             src={coverImage.url}
             alt={title}
+            width={1200}
+            height={630}
+            priority
+            unoptimized
+            sizes="(max-width: 768px) 100vw, 768px"
             className="w-full object-cover max-h-[420px]"
           />
         </div>
@@ -69,9 +74,13 @@ export default function BlogPostHeader({ post }) {
         {author && (
           <div className="flex items-center gap-2.5">
             {author.profilePicture ? (
-              <img
+              <Image
                 src={author.profilePicture}
                 alt={author.name}
+                width={32}
+                height={32}
+                loading="lazy"
+                unoptimized
                 className="w-8 h-8 rounded-full object-cover border border-line"
               />
             ) : (

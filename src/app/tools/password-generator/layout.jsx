@@ -8,6 +8,8 @@ const DESCRIPTION = "Generate strong, secure passwords instantly. Customise leng
 const TITLE = "Free Password Generator – Strong & Secure";
 const URL = "https://abitechpros.com/tools/password-generator";
 
+export const dynamic = "force-static";
+
 export const metadata = {
   title: TITLE,
   description: DESCRIPTION,

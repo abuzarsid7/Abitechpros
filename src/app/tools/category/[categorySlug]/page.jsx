@@ -5,6 +5,8 @@ import ToolCard from "@/components/tools/ToolCard";
 import JsonLd from "@/components/JsonLd";
 import { categories, categoryToSlug, getToolsByCategory, slugToCategory } from "@/data/tools";
 
+export const dynamic = "force-static";
+
 const BASE_URL = "https://abitechpros.com";
 
 function getCategoryDescription(category) {

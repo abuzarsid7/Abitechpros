@@ -50,13 +50,14 @@
   --color-faint:     var(--faint);
   --color-accent:    var(--accent);
   --color-accent-fg: var(--accent-fg);
+  --font-family-mono: var(--font-fira-code), ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
 /* ─── Base body styles ──────────────────────────────────────────────────── */
 body {
   background-color: var(--base);
   color: var(--dim);
-  font-family: Inter, sans-serif;
+  font-family: var(--font-inter), Inter, sans-serif;
   font-size: 0.875rem;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
