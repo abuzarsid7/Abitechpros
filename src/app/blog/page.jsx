@@ -10,7 +10,7 @@ const BLOG_SCHEMA = [
     "@context": "https://schema.org",
     "@type": "Blog",
     name: "AbiTechPros Blog",
-    description: "Articles, guides, and tips for developers.",
+    description: "My notes on tech — things I've built, learned, and occasionally struggled with. Not a content farm. Just me writing about what actually matters.",
     url: "https://abitechpros.com/blog",
     publisher: { "@type": "Organization", name: "AbiTechPros", url: "https://abitechpros.com" },
   },
@@ -26,7 +26,7 @@ const BLOG_SCHEMA = [
 
 export const metadata = {
   title: "Blog | AbiTechPros",
-  description: "Articles, guides, and tips for developers.",
+  description: "My notes on tech — things I've built, learned, and occasionally struggled with. Not a content farm. Just me writing about what actually matters.",
   alternates: { canonical: "https://abitechpros.com/blog" },
   keywords: [
     "tech blog",
@@ -40,7 +40,7 @@ export const metadata = {
   ],
   openGraph: {
     title: "Blog | AbiTechPros",
-    description: "Articles, guides, and tips for developers.",
+    description: "My notes on tech — things I've built, learned, and occasionally struggled with. Not a content farm. Just me writing about what actually matters.",
     url: "https://abitechpros.com/blog",
     siteName: "AbiTechPros",
     type: "website",
@@ -48,7 +48,7 @@ export const metadata = {
   twitter: {
     card: "summary",
     title: "Blog | AbiTechPros",
-    description: "Articles, guides, and tips for developers.",
+    description: "My notes on tech — things I've built, learned, and occasionally struggled with. Not a content farm. Just me writing about what actually matters.",
   },
 };
 
