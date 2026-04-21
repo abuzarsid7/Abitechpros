@@ -88,7 +88,7 @@ export default function Footer() {
               />
             </Link>
             <p className="text-xs leading-relaxed text-faint max-w-[220px]">
-              A collection of handy tools and articles built to make developers&rsquo; lives easier.
+              
             </p>
             {/* Socials */}
             <div className="flex items-center gap-2 mt-1">

@@ -288,7 +288,7 @@ export default function MarkdownToPdfPage() {
   return (
     <ToolLayout
       title="Markdown to PDF"
-      description="Write or paste Markdown, preview it live, then export a polished PDF."
+      description="Got a Markdown file you need to send as a PDF? Paste it in, download it out. That's it."
       size="xl"
       actions={
         <ToolButton

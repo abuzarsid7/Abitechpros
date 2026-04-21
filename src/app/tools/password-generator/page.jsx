@@ -101,7 +101,7 @@ export default function PasswordGeneratorPage() {
   return (
     <ToolLayout
       title="Password Generator"
-      description="Generate strong, secure passwords with customisable length and character sets."
+      description="Stop using her birthdate or your dog's name as a password. Generate something actually secure in 2 seconds."
       actions={
         <ToolButton variant="primary" onClick={generate} icon={
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"

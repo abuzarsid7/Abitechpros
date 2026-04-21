@@ -1,30 +1,6 @@
 export const homePageMetadata = {
-  title: "AbiTechPros – Free Developer Tools & Tech Blog",
-  description: "Free browser-based developer tools and tech articles. No sign-up required.",
-  alternates: { canonical: "https://abitechpros.com" },
-  keywords: [
-    "AbiTechPros",
-    "free developer tools",
-    "online tools for developers",
-    "browser based tools",
-    "coding utilities",
-    "tech blog",
-    "developer utilities",
-    "free web tools",
-    "no sign-up tools",
-  ],
-  openGraph: {
-    title: "AbiTechPros – Free Developer Tools & Tech Blog",
-    description: "Free browser-based developer tools and tech articles. No sign-up required.",
-    url: "https://abitechpros.com",
-    siteName: "AbiTechPros",
-    type: "website",
-  },
-  twitter: {
-    card: "summary",
-    title: "AbiTechPros – Free Developer Tools & Tech Blog",
-    description: "Free browser-based developer tools and tech articles. No sign-up required.",
-  },
+  title: "AbiTechPros",
+  description: "Free browser-based developer tools and tech articles.",
 };
 
 export const homePageContent = {
@@ -32,7 +8,7 @@ export const homePageContent = {
     badge: "Free · No sign-up required",
     title: "Small tools. Real problems. Built for people who got tired of Googling the same things.",
     description:
-      "I'm Abuzar. I built AbiTechPros so you don't have to waste time on the repetitive tech stuff — just open a tool, get it done, and move on.",
+      "I'm Abuzar. I built AbiTechPros so you don't have to waste time on the repetitive tech stuff. Just open a tool, get it done, and move on.",
     primaryCta: {
       label: "Browse tools",
       href: "/tools",

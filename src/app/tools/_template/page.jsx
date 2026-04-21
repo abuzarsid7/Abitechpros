@@ -17,9 +17,8 @@ import { useToolAnalytics } from "@/hooks";
  *
  * Then update:
  * - TOOL_SLUG and UI copy in this file
- * - src/app/tools/your-tool-slug/layout.jsx metadata and schema
+ * - src/app/tools/your-tool-slug/layout.jsx metadata
  * - src/data/tools.js registry entry
- * - src/lib/toolVariations.js entries (if using variation pages)
  */
 
 const TOOL_SLUG = "_template";

@@ -1,6 +1,5 @@
 import { categories, categoryToSlug, tools } from "@/data/tools";
 import { getPosts } from "@/lib/hashnode";
-import { getToolVariationsForTool } from "@/lib/toolVariations";
 
 const BASE_URL = "https://abitechpros.com";
 
@@ -18,15 +17,6 @@ const toolRoutes = tools.map((tool) => ({
   changeFrequency: "monthly",
   priority: 0.8,
 }));
-
-const toolVariationRoutes = tools.flatMap((tool) =>
-  getToolVariationsForTool(tool.id).map((variation) => ({
-    url: `${BASE_URL}${tool.href}/${variation.slug}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly",
-    priority: 0.65,
-  }))
-);
 
 const toolCategoryRoutes = categories.map((category) => ({
   url: `${BASE_URL}/tools/category/${categoryToSlug(category)}`,
@@ -50,5 +40,5 @@ export default async function sitemap() {
     // If the Hashnode API is unavailable at build time, skip blog posts
   }
 
-  return [...staticRoutes, ...toolCategoryRoutes, ...toolRoutes, ...toolVariationRoutes, ...blogRoutes];
+  return [...staticRoutes, ...toolCategoryRoutes, ...toolRoutes, ...blogRoutes];
 }

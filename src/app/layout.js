@@ -23,19 +23,9 @@ const firaCode = Fira_Code({
   weight: ["400", "500"],
 });
 
-const BASE_URL = "https://abitechpros.com";
-
-
 export const metadata = {
-  title: {
-    template: "%s | AbiTechPros",
-    default: "AbiTechPros – Free Developer Tools & Tech Blog",
-  },
-  description: "Free browser-based developer tools and tech articles. No sign-up required.",
-  keywords: ["developer tools", "free online tools", "tech blog", "coding utilities"],
-  metadataBase: new URL(BASE_URL),
-  creator: "Abuzar Siddiqui",
-  authors: [{ name: "Abuzar Siddiqui", url: "https://github.com/abuzarsid7" }],
+  title: "AbiTechPros",
+  description: "Free browser-based developer tools and tech articles.",
 };
 
 export default function RootLayout({ children }) {
@@ -49,37 +39,6 @@ export default function RootLayout({ children }) {
           }}
         />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
-        {/* Structured data: WebSite + Organization */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify([
-              {
-                "@context": "https://schema.org",
-                "@type": "WebSite",
-                name: "AbiTechPros",
-                url: BASE_URL,
-                description: "Free browser-based developer tools and tech articles.",
-                potentialAction: {
-                  "@type": "SearchAction",
-                  target: {
-                    "@type": "EntryPoint",
-                    urlTemplate: `${BASE_URL}/tools?q={search_term_string}`,
-                  },
-                  "query-input": "required name=search_term_string",
-                },
-              },
-              {
-                "@context": "https://schema.org",
-                "@type": "Organization",
-                name: "AbiTechPros",
-                url: BASE_URL,
-                logo: `${BASE_URL}/icons/logo.png`,
-              },
-            ]),
-          }}
-        />
       </head>
       <body>
         {/* Google Analytics */}

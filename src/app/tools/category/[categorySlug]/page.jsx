@@ -2,7 +2,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Container from "@/components/layout/Container";
 import ToolCard from "@/components/tools/ToolCard";
-import JsonLd from "@/components/JsonLd";
 import { categories, categoryToSlug, getToolsByCategory, slugToCategory } from "@/data/tools";
 
 export const dynamic = "force-static";
@@ -70,38 +69,17 @@ export function generateMetadata({ params }) {
 
   if (!category) {
     return {
-      title: "Category Not Found | AbiTechPros",
-      robots: { index: false, follow: false },
+      title: "Category Not Found",
+      description: "Category not found.",
     };
   }
 
   const description = getCategoryDescription(category);
-  const categoryUrl = `${BASE_URL}/tools/category/${params.categorySlug}`;
-  const title = `${category} Tools | AbiTechPros`;
+  const title = `${category} Tools`;
 
   return {
     title,
     description,
-    alternates: { canonical: categoryUrl },
-    keywords: [
-      `${category.toLowerCase()} tools`,
-      `free ${category.toLowerCase()} tools`,
-      `online ${category.toLowerCase()} tools`,
-      `${category.toLowerCase()} developer tools`,
-      "AbiTechPros tools",
-    ],
-    openGraph: {
-      title,
-      description,
-      url: categoryUrl,
-      siteName: "AbiTechPros",
-      type: "website",
-    },
-    twitter: {
-      card: "summary",
-      title,
-      description,
-    },
   };
 }
 
@@ -111,47 +89,9 @@ export default function ToolCategoryPage({ params }) {
 
   const categoryTools = getToolsByCategory(category);
   const description = getCategoryDescription(category);
-  const categoryUrl = `${BASE_URL}/tools/category/${params.categorySlug}`;
-
-  const schemaData = [
-    {
-      "@context": "https://schema.org",
-      "@type": "CollectionPage",
-      name: `${category} Tools`,
-      description,
-      url: categoryUrl,
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
-        { "@type": "ListItem", position: 2, name: "Tools", item: `${BASE_URL}/tools` },
-        { "@type": "ListItem", position: 3, name: `${category} Tools`, item: categoryUrl },
-      ],
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "ItemList",
-      name: `${category} Tools List`,
-      itemListElement: categoryTools.map((tool, index) => ({
-        "@type": "ListItem",
-        position: index + 1,
-        name: tool.title,
-        url: `${BASE_URL}${tool.href}`,
-      })),
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: getCategoryFaqItems(category),
-    },
-  ];
 
   return (
     <Container size="lg" as="section" className="py-12">
-      <JsonLd data={schemaData} />
-
       <div className="mb-8">
         <Link
           href="/tools"

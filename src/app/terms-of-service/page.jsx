@@ -1,58 +1,15 @@
 import Container from "@/components/layout/Container";
-import JsonLd from "@/components/JsonLd";
 
 export const dynamic = "force-static";
 
-const TERMS_URL = "https://abitechpros.com/terms-of-service";
-
-const TERMS_SCHEMA = [
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    name: "Terms of Service",
-    description: "Read the AbiTechPros Terms of Service and usage conditions.",
-    url: TERMS_URL,
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://abitechpros.com" },
-      { "@type": "ListItem", position: 2, name: "Terms of Service", item: TERMS_URL },
-    ],
-  },
-];
-
 export const metadata = {
-  title: "Terms of Service — AbiTechPros",
+  title: "Terms of Service",
   description: "Read the AbiTechPros Terms of Service and conditions for using our developer tools and content.",
-  alternates: { canonical: TERMS_URL },
-  keywords: [
-    "AbiTechPros terms of service",
-    "terms and conditions",
-    "developer tools terms",
-    "website usage policy",
-    "acceptable use",
-  ],
-  openGraph: {
-    title: "Terms of Service — AbiTechPros",
-    description: "Read the AbiTechPros Terms of Service and conditions for using our developer tools and content.",
-    url: TERMS_URL,
-    siteName: "AbiTechPros",
-    type: "website",
-  },
-  twitter: {
-    card: "summary",
-    title: "Terms of Service — AbiTechPros",
-    description: "Read the AbiTechPros Terms of Service and conditions for using our developer tools and content.",
-  },
 };
 
 export default function TermsOfServicePage() {
   return (
     <Container size="md" as="section" className="py-16">
-      <JsonLd data={TERMS_SCHEMA} />
-
       <h1 className="text-3xl font-bold text-ink">Terms of Service</h1>
       <p className="mt-4 text-sm leading-relaxed text-faint max-w-prose">
         These Terms of Service govern your use of the AbiTechPros website and all tools, content, and services offered on it. By using the site, you agree to these terms.

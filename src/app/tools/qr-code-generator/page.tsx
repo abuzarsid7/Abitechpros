@@ -138,7 +138,7 @@ export default function QrCodeGeneratorPage() {
   return (
     <ToolLayout
       title="QR Code Generator"
-      description="Turn any URL or text into a scannable QR code you can download instantly."
+      description="Need a QR code for a link, a form, or a Wi-Fi password? Type it in, download it and you're done."
       size="lg"
       actions={
         <div className="flex items-center gap-2">

@@ -1,58 +1,15 @@
 import Container from "@/components/layout/Container";
-import JsonLd from "@/components/JsonLd";
 
 export const dynamic = "force-static";
 
-const PRIVACY_URL = "https://abitechpros.com/privacy-policy";
-
-const PRIVACY_SCHEMA = [
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    name: "Privacy Policy",
-    description: "Read the AbiTechPros privacy policy and data handling practices.",
-    url: PRIVACY_URL,
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://abitechpros.com" },
-      { "@type": "ListItem", position: 2, name: "Privacy Policy", item: PRIVACY_URL },
-    ],
-  },
-];
-
 export const metadata = {
-  title: "Privacy Policy — AbiTechPros",
+  title: "Privacy Policy",
   description: "Read the AbiTechPros privacy policy and data handling practices.",
-  alternates: { canonical: PRIVACY_URL },
-  keywords: [
-    "AbiTechPros privacy policy",
-    "data privacy",
-    "website privacy",
-    "cookie policy",
-    "developer tools privacy",
-  ],
-  openGraph: {
-    title: "Privacy Policy — AbiTechPros",
-    description: "Read the AbiTechPros privacy policy and data handling practices.",
-    url: PRIVACY_URL,
-    siteName: "AbiTechPros",
-    type: "website",
-  },
-  twitter: {
-    card: "summary",
-    title: "Privacy Policy — AbiTechPros",
-    description: "Read the AbiTechPros privacy policy and data handling practices.",
-  },
 };
 
 export default function PrivacyPolicyPage() {
   return (
     <Container size="md" as="section" className="py-16">
-      <JsonLd data={PRIVACY_SCHEMA} />
-
       <h1 className="text-3xl font-bold text-ink">Privacy Policy</h1>
       <p className="mt-4 text-sm leading-relaxed text-faint max-w-prose">
         This Privacy Policy explains how AbiTechPros collects, uses, and protects information when you use this website and its tools.
